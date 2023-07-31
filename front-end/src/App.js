@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import {useEffect, useContext} from 'react';
+import {When} from 'react-if';
+import Deal from './components/Deal';
+import Sign from './components/Sign';
+import {authContext} from './context/AuthContext';
 
 function App() {
+  const {isAuth, logOut, checkToken} = useContext(authContext);
+  useEffect(() => {
+    checkToken();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <When condition={!isAuth}>
+        <Sign />
+      </When>
+      <When condition={isAuth}>
+        <button onClick={logOut}>logout</button>
+        <Deal />
+      </When>
+    </>
   );
 }
 
