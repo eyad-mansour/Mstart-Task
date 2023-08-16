@@ -1,0 +1,15 @@
+/* colors #FFF3E2 #FFE5CA #FA9884 #E74646*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    background-color: #FFF3E2;
+    background-image: linear-gradient(to top, #FFE5CA, #FFF3E2);
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+}

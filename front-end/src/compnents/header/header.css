@@ -1,0 +1,36 @@
+/* colors #FFF3E2 #FFE5CA #FA9884 #E74646*/
+.header {
+    position: sticky;
+    top: 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    opacity: .8;
+    padding-right: 10rem;
+    padding-left: 10rem;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #373232;
+    width: 600px;
+}
+
+.navigation {
+    display: grid;
+    font-size: 1.3em;
+    grid-template-columns: repeat(5, 5em);
+    gap: 20px;
+    justify-items: end;
+    justify-content: end;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: white;
+}

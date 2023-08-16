@@ -1,6 +1,6 @@
 'use strict';
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     Server_DateTime: {

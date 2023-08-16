@@ -1,8 +1,7 @@
 'use strict';
 const bcrypt = require('bcrypt');
 const base64 = require('base-64');
-const {userModel} = require('../models');
-const jwt = require('jsonwebtoken');
+const { userModel } = require('../models');
 
 const signup = async (req, res) => {
   try {
@@ -46,38 +45,53 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const basicHeader = req.headers.authorization.split(' ');
-  const encodedHeader = basicHeader.pop();
-  const decodedValue = base64.decode(encodedHeader);
-  // console.log(decodedValue);
-  const [Email, Password] = decodedValue.split(':');
-  const user = await userModel.findOne({
-    where: {
-      Email: Email,
-    },
-  });
+  try {
+    if (!req.headers.authorization) return res.status(401).send("Bad Request");
+    console.log(req.headers.authorization);
+    const encodedHeader = req.headers.authorization.split(" ").pop();
+    const [Email, Password] = base64.decode(encodedHeader).split(":");
+    console.log(Email, Password, 'hellllo this is somthing ');
 
-  if (user) {
-    const isSame = await bcrypt.compare(Password, user.Password);
-    if (isSame) {
-      res.status(200).json(user);
-    } else {
-      return res.status(401).send('you are not authorized');
+    let user = await userModel.findOne({
+      where: {
+        Email: Email,
+      },
+    });
+    if (!user) {
+      user = await userModel.findOne({
+        where: {
+          Email: Email,
+        },
+      });
     }
-  } else {
-    return res.status(401).send('you are not authorized');
+
+    if (user) {
+      const isAuthorized = await bcrypt.compare(Password, user.Password)
+      if (isAuthorized) {
+        return res
+          .status(200)
+          .json(user);
+      } else {
+        return res.status(401).send("Please Check Your Username and Password");
+      }
+    } else {
+      return res.status(401).send("Please Check Your Username and Password");
+    }
+  } catch (error) {
+    /* istanbul ignore next */
+    console.log(error);
   }
 };
 
 const allUser = async (req, res) => {
-  const users = await userModel.findAll({include: {all: true}});
+  const users = await userModel.findAll({ include: { all: true } });
   console.log(req);
   res.json(users);
 };
 
 const deleteUser = async (req, res) => {
-  const {id} = req.params;
-  await userModel.destroy({where: {id: id}});
+  const { id } = req.params;
+  await userModel.destroy({ where: { id: id } });
   return res.status(204).send('deleted');
 };
 

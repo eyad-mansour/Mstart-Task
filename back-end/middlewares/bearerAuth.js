@@ -1,11 +1,11 @@
 'use strict';
 
-const {userModel} = require('../models/index');
+const { userModel } = require('../models/index');
 
 module.exports = async (req, res, next) => {
   // console.log(req.headers, '');
   if (!req.headers.authorization) {
-    return next('you are not authorized ????????????????????????????? ');
+    return next('you are not authorized ??? ');
   }
   const token = req.headers.authorization.split(' ').pop();
   // console.log(token, 'this is the token !@#@#!$%');

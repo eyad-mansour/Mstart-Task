@@ -9,14 +9,14 @@ class userDealRoutes {
     try {
       return await this.model.create(obj);
     } catch (error) {
-      console.error('error while creating');
+      console.error('error while creating', 'helllllllllllllllllo###########');
     }
   }
 
   async read(id) {
     try {
       if (id) {
-        return await this.model.findOne({where: {id: id}});
+        return await this.model.findOne({ where: { id: id } });
       } else {
         return await this.model.findAll();
       }
@@ -27,7 +27,7 @@ class userDealRoutes {
   async readWithDeal(id) {
     try {
       if (id) {
-        return await this.model.findAll({where: {id: id}});
+        return await this.model.findAll({ where: { id: id } });
       } else {
         return await this.model.findAll();
       }
@@ -37,7 +37,7 @@ class userDealRoutes {
   }
   async update(id, obj) {
     try {
-      const dataByID = await this.model.findOne({where: {id}});
+      const dataByID = await this.model.findOne({ where: { id } });
       return await dataByID.update(obj);
     } catch (error) {
       console.error(`error while updating data in ${id}`);
@@ -46,7 +46,7 @@ class userDealRoutes {
 
   async delete(id) {
     try {
-      return await this.model.destroy({where: {id}});
+      return await this.model.destroy({ where: { id } });
     } catch (error) {
       console.error(`error while deleteing with id: ${id}`);
     }

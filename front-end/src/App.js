@@ -1,25 +1,30 @@
-import {useEffect, useContext} from 'react';
-import {When} from 'react-if';
-import Deal from './components/Deal';
-import Sign from './components/Sign';
-import {authContext} from './context/AuthContext';
+import './app.css'
+import { Route, Routes } from 'react-router';
+import Login from './compnents/auth/Login';
+import Signup from './compnents/auth/Signup';
+import Footer from './compnents/footer/Footer';
+import Header from './compnents/header/Header';
+import Welcome from './compnents/land/Welcome';
+import Home from './compnents/home/Home'
+import AddDeal from './compnents/home/AddDeal';
+import ProfileContainer from './compnents/profile/ProfileContainer'
 
 function App() {
-  const {isAuth, logOut, checkToken} = useContext(authContext);
-  useEffect(() => {
-    checkToken();
-  }, []);
 
   return (
     <>
-      <When condition={!isAuth}>
-        <Sign />
-      </When>
-      <When condition={isAuth}>
-        <button onClick={logOut}>logout</button>
-        <Deal />
-      </When>
+      <Header />
+      <Routes>
+        <Route path='/' element={< Welcome />} />
+        <Route path='/home' element={< Home />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/add_deal' element={<AddDeal />} />
+        <Route path='/profile' element={<ProfileContainer />} />
+      </Routes>
+      <Footer />
     </>
+
   );
 }
 

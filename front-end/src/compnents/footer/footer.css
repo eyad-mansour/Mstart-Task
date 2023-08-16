@@ -1,0 +1,24 @@
+/* colors #FFF3E2 #FFE5CA #FA9884 #E74646*/
+
+img {
+    width: 40px;
+    border-radius: 40%;
+}
+
+
+.footer {
+    padding: 40px 0;
+    background-color: #FA9884;
+    text-align: center;
+    bottom: 0;
+}
+
+.footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+    border-radius: 50%;
+}
+
+.footer a:hover {
+    opacity: 1;
+}

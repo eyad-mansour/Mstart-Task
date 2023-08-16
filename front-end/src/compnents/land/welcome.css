@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+.home-hero {
+    font-family: 'Roboto Mono', monospace;
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+        "left-top right-top"
+        "middle middle"
+        "left-bottom right-bottom";
+}
+
+.home-left-top {
+    grid-area: left-top;
+    background-image: url('../../assets//background-yellow.jpg');
+    height: calc(100vh - 80px);
+    background-size: cover;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    line-height: 5rem;
+}
+
+.home-right-top {
+    background-position: right;
+    background-position: bottom;
+    background-size: cover;
+    height: calc(100vh - 80px);
+    grid-area: right-top;
+    display: grid;
+    background-image: url('../../assets//shopping-cart.jpg');
+    place-items: center;
+}
+
+.home-middle {
+    background-position: right;
+    height: calc(100vh - 80px);
+    background-size: contain;
+    background-color: black;
+    grid-area: middle;
+    color: black;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    background-image: url('../../assets//black_splatter_grunge_ink_collection.jpg');
+
+}
+
+.home-left-bottom {
+    color: aliceblue;
+    background-position: bottom;
+    background-size: cover;
+    height: calc(100vh - 80px);
+    grid-area: left-bottom;
+    display: grid;
+    font-size: 1.7rem;
+    place-items: center;
+    background-image: url('../../assets/shopping-cart-black-background-with-copy-space.jpg');
+}
+
+.home-right-bottom {
+    background-position: right;
+    background-size: cover;
+    color: aliceblue;
+    height: calc(100vh - 80px);
+    grid-area: right-bottom;
+    align-items: left;
+    font-size: 1.7rem;
+    display: grid;
+    place-items: center;
+    background-image: url('../../assets/black-friday-sales-elements-assortment-with-copy-space.jpg');
+}

@@ -16,7 +16,7 @@ router.get('/deal/:id', bearerAuth, capabilities('read'), getOneDeal);
 router.post('/deal', bearerAuth, capabilities('create'), createDeal);
 router.get('/deals', bearerAuth, capabilities('read'), getDeals);
 router.delete(
-  '/deal/:id/:userID',
+  '/deal/:id',
   bearerAuth,
   capabilities('delete'),
   deleteDeal
